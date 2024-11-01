@@ -22,8 +22,8 @@
 
 #define NAME_LENGTH		40
 
-typedef struct student {	//sizeof(STUDENT) == 44
-	char* name[NAME_LENGTH];  // 40
+typedef struct student {	
+	char* name;  
 	int studentNum;          //  4
 } STUDENT;
 

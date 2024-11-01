@@ -22,22 +22,22 @@
 
 #define NAME_LENGTH		40
 
-typedef struct student {	//sizeof(STUDENT) == 44
-	char* name[NAME_LENGTH];  // 40
+typedef struct student {	
+	char name[NAME_LENGTH];  
 	int studentNum;          //  4
-} STUDENT;
+} STUDENT, *PSTUDENT;
 
 //C - create
-STUDENT CreateStudent(char* Name, int StudentNum);
+PSTUDENT CreateStudent(char* Name, int StudentNum);
 
 //R - read
-bool WriteStudentToFile(STUDENT s, char* filename);
-STUDENT ReadStudentFromFile(char* filename);		// we have some technical debt here... we will return to fix!
+bool WriteStudentToFile(PSTUDENT s, char* filename);
+PSTUDENT ReadStudentFromFile(char* filename);		// we have some technical debt here... we will return to fix!
 
 //U - update
 
 
 //D - delete
-void DestroyStudent(STUDENT Student);
+void DestroyStudent(PSTUDENT Student);
 
-void PrintStudent(STUDENT Student);
+void PrintStudent(PSTUDENT Student);
