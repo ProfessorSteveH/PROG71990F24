@@ -61,6 +61,9 @@ bool CompareProfessors(PROFESSOR lhs, PROFESSOR rhs) {
 	return true;
 }
 
+PROFESSOR CopyProfessor(PROFESSOR src) {
+	return CreateProfessor(src.name, src.dept);
+}
 //U - update
 
 

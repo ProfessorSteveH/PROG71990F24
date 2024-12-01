@@ -19,7 +19,7 @@ bool WriteListToStream(PLISTNODE list, FILE* fp);
 
 int GetCountOfParticipants(PLISTNODE list);
 
-bool Empty(PLISTNODE* list);
+void Empty(PLISTNODE* list);
 
 /// <summary>
 /// This function destroys the list.  The list is in an unknown state after this call returns

@@ -97,6 +97,25 @@ bool CompareParticipant(PARTICIPANT lhs, PARTICIPANT rhs) {
 
 }
 
+PARTICIPANT CopyParticipant(PARTICIPANT src) {
+	PARTICIPANT dst = { 0 };
+
+	dst.type = src.type;
+
+	switch (src.type) {
+	case PROF: dst.attendee.professor = CopyProfessor(src.attendee.professor);
+		break;
+	case STUD: dst.attendee.student = CopyStudent(src.attendee.student);
+		break;
+	case GST: dst.attendee.guest = CopyGuest(src.attendee.guest);
+		break;
+	default: fprintf(stderr, "error comparing types\n");
+		exit(EXIT_FAILURE);
+	}
+
+	return dst;
+}
+
 TYPE GetParticipantType(PARTICIPANT p) {
 	return p.type;
 }

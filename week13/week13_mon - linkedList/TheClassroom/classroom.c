@@ -87,23 +87,29 @@ bool ReadClassroomFromFile(CLASSROOM* c, char* filename) {
 		return false;
 	}
 
+	// we almost forget this next line:
+	c->seats = NULL;
+
 	char buf[MAX_NAME] = { 0 };
 	fgets(buf, MAX_NAME, fp);
+
+	CleanNewLineFromString(buf);
+	strncpy(c->name, buf, MAX_NAME);		//this duplicates Create
 	
 	int capacity = 0;
-	fscanf("%d\n", &capacity);
-
-	*c = CreateClassroom(buf, capacity);
-	//CleanNewLineFromString(buf);
-	//strncpy(c->name, buf, MAX_NAME);		//this duplicates Create
+	fscanf(fp, "%d\n", &capacity);
+	c->capacity = capacity;
 
 	int count = 0;
 	fscanf(fp, "%d\n", &count);
 
 	for (int i = 0; i < count; i++) {
 			PARTICIPANT p = ReadParticipantFromStream(fp);
-			//TODO deal with fail (likely a fail on malloc)
-			AddParticipantToClassroom(p, c);
+			if (!AddParticipantToClassroom(p, c)) {
+				fclose(fp);
+				fprintf(stderr, "panic!\n");
+				return false;
+			}
 		}
 			
 
@@ -112,5 +118,5 @@ bool ReadClassroomFromFile(CLASSROOM* c, char* filename) {
 }
 
 void DestroyClassroom(CLASSROOM c) {
-	// nothing
+    DestroyList(&(c.seats));
 }

@@ -38,6 +38,7 @@ STUDENT ReadStudentFromStream(FILE* fp);		// we have some technical debt here...
 
 //U - update
 bool CompareStudent(STUDENT lhs, STUDENT rhs);
+STUDENT CopyStudent(STUDENT src);
 
 
 //D - delete

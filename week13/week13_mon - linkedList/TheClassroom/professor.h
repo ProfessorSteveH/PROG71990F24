@@ -20,7 +20,7 @@ bool WriteProfessorToStream(FILE* fp, PROFESSOR p);
 PROFESSOR ReadProfessorFromStream(FILE* fp);		// we have some technical debt here... we will return to fix!
 
 bool CompareProfessors(PROFESSOR lhs, PROFESSOR rhs);
-
+PROFESSOR CopyProfessor(PROFESSOR src);
 
 //U - update
 

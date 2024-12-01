@@ -48,7 +48,7 @@ STUDENT ReadStudentFromStream(FILE* fp) {
 		exit(EXIT_FAILURE);
 	}
 	int tmpStudentNum;
-	int numResult = fscanf(fp, "%d", &tmpStudentNum);
+	int numResult = fscanf(fp, "%d\n", &tmpStudentNum);
 	if (numResult != 1) {
 		fprintf(stderr, "error, not able to read studentnum from file\n");
 		exit(EXIT_FAILURE);
@@ -67,6 +67,10 @@ void DestroyStudent(STUDENT Student) {
 
 bool CompareStudent(STUDENT lhs, STUDENT rhs) {
 	return (lhs.studentNum == rhs.studentNum);
+}
+
+STUDENT CopyStudent(STUDENT src) {
+	return CreateStudent(src.name, src.studentNum);
 }
 
 void PrintStudent(STUDENT Student) {
